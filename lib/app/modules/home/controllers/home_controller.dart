@@ -8,6 +8,8 @@ class HomeController extends GetxController {
 
   RxList<String> items = [''].obs;
 
+  int seed = 0;
+
   List<Color> colors = [
     Colors.blue.shade600,
     Colors.red.shade600,

@@ -1,4 +1,5 @@
-import 'dart:math';
+import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -28,6 +29,7 @@ class HomeView extends GetView<HomeController> {
                   () => FortuneWheel(
                     selected: controller.controller.stream,
                     animateFirst: false,
+                    hapticImpact: HapticImpact.light,
                     indicators: const <FortuneIndicator>[
                       FortuneIndicator(
                         alignment: Alignment.topCenter,
@@ -52,6 +54,32 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                     ),
+                    onAnimationEnd: () {
+                      // show result when anomation end
+                      final result = controller.items[controller.seed];
+
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Result'),
+                            content: Text(
+                              result,
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
+                            actionsAlignment: MainAxisAlignment.center,
+                            actions: [
+                              FilledButton(
+                                onPressed: () => Get.back(),
+                                child: Text('Ok'),
+                              )
+                            ],
+                          );
+                        },
+                      );
+
+                      print('end');
+                    },
                   ),
                 ),
               ),
@@ -74,6 +102,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       maxLines: 20,
                       onChanged: (value) {
+                        // set items
                         controller.setItems(value.trim());
                       },
                     ),
@@ -83,10 +112,12 @@ class HomeView extends GetView<HomeController> {
                         width: constraints.maxWidth,
                         child: FilledButton(
                           onPressed: () {
+                            // stream value
+                            controller.seed =
+                                math.Random().nextInt(controller.items.length);
+                            // add stream value
                             controller.controller.addStream(
-                              Stream.value(
-                                Random().nextInt(controller.items.length),
-                              ),
+                              Stream.value(controller.seed),
                             );
                           },
                           child: const Text('Roll!'),
