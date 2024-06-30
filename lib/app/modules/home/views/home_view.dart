@@ -58,39 +58,41 @@ class HomeView extends GetView<HomeController> {
             ),
             Flexible(
               flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Gap(16.0),
-                  const Text('Items'),
-                  const Gap(8.0),
-                  TextFormField(
-                    controller: controller.itemController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Items'),
+                    const Gap(8.0),
+                    TextFormField(
+                      controller: controller.itemController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
                       ),
+                      maxLines: 20,
                     ),
-                    maxLines: 20,
-                  ),
-                  const Gap(8.0),
-                  LayoutBuilder(builder: (context, constraints) {
-                    return SizedBox(
-                      width: constraints.maxWidth,
-                      child: FilledButton(
-                        onPressed: () {
-                          controller.setItems(controller.itemController.text);
-                          controller.controller.addStream(
-                            Stream.value(
-                              Random().nextInt(controller.items.length),
-                            ),
-                          );
-                        },
-                        child: const Text('Roll'),
-                      ),
-                    );
-                  })
-                ],
+                    const Gap(8.0),
+                    LayoutBuilder(builder: (context, constraints) {
+                      return SizedBox(
+                        width: constraints.maxWidth,
+                        child: FilledButton(
+                          onPressed: () {
+                            controller.setItems(controller.itemController.text);
+                            controller.controller.addStream(
+                              Stream.value(
+                                Random().nextInt(controller.items.length),
+                              ),
+                            );
+                          },
+                          child: const Text('Roll!'),
+                        ),
+                      );
+                    })
+                  ],
+                ),
               ),
             ),
           ],
