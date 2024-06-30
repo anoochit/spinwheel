@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -62,7 +61,7 @@ class HomeView extends GetView<HomeController> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: Text('Result'),
+                            title: const Text('Result'),
                             content: Text(
                               result,
                               style: Theme.of(context).textTheme.headlineLarge,
@@ -71,7 +70,7 @@ class HomeView extends GetView<HomeController> {
                             actions: [
                               FilledButton(
                                 onPressed: () => Get.back(),
-                                child: Text('Ok'),
+                                child: const Text('Ok'),
                               )
                             ],
                           );
