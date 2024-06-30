@@ -76,8 +76,6 @@ class HomeView extends GetView<HomeController> {
                           );
                         },
                       );
-
-                      print('end');
                     },
                   ),
                 ),

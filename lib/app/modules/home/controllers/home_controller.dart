@@ -25,6 +25,11 @@ class HomeController extends GetxController {
     setDefaultItems();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   setItems(String text) {
     final witems = text.split('\n');
     if (witems.length >= 2) {
