@@ -25,7 +25,6 @@ class HomeController extends GetxController {
 
   setItems(String text) {
     final witems = text.split('\n');
-
     if (witems.length >= 2) {
       items.clear();
       for (var e in witems) {
@@ -33,6 +32,8 @@ class HomeController extends GetxController {
           items.add(e);
         }
       }
+    } else {
+      Get.snackbar('Error', 'Should have at least 2 items');
     }
   }
 
