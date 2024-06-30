@@ -30,7 +30,7 @@ class HomeView extends GetView<HomeController> {
                     animateFirst: false,
                     indicators: const <FortuneIndicator>[
                       FortuneIndicator(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.topCenter,
                         child: TriangleIndicator(
                           color: Colors.lightGreen,
                           width: 32.0,
@@ -73,6 +73,9 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       maxLines: 20,
+                      onChanged: (value) {
+                        controller.setItems(value.trim());
+                      },
                     ),
                     const Gap(8.0),
                     LayoutBuilder(builder: (context, constraints) {
@@ -80,7 +83,6 @@ class HomeView extends GetView<HomeController> {
                         width: constraints.maxWidth,
                         child: FilledButton(
                           onPressed: () {
-                            controller.setItems(controller.itemController.text);
                             controller.controller.addStream(
                               Stream.value(
                                 Random().nextInt(controller.items.length),
