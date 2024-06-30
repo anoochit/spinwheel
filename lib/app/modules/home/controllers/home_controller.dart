@@ -26,10 +26,12 @@ class HomeController extends GetxController {
   setItems(String text) {
     final witems = text.split('\n');
 
-    items.clear();
-    for (var e in witems) {
-      if (e.isNotEmpty) {
-        items.add(e);
+    if (witems.length >= 2) {
+      items.clear();
+      for (var e in witems) {
+        if (e.isNotEmpty) {
+          items.add(e);
+        }
       }
     }
   }
