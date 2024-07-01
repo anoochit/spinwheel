@@ -20,3 +20,5 @@ A spin wheel
 ## Screenshots
 
 ![](/screenshots/screenshot01.png)
+
+![](/screenshots/screenshot02.png)
