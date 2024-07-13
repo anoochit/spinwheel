@@ -29,7 +29,6 @@ void main() {
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     doWhenWindowReady(() {
       const initialSize = Size(1440, 824);
-      appWindow.maxSize = initialSize;
       appWindow.minSize = initialSize;
       appWindow.size = initialSize;
       appWindow.show();
