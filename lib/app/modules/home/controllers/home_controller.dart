@@ -39,8 +39,6 @@ class HomeController extends GetxController {
           items.add(e);
         }
       }
-    } else {
-      Get.snackbar('Error', 'Should have at least 2 items');
     }
   }
 
